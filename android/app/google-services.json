@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "70799798773",
+    "project_id": "lab3danetangthuchanh",
+    "storage_bucket": "lab3danetangthuchanh.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:70799798773:android:5dd14b3957e7591eb070bc",
+        "android_client_info": {
+          "package_name": "com.thuchanh3"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDdy40vphWjJbILZQnCjW75cL6UrjBcYEc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
