@@ -69,7 +69,9 @@ const login = (dispatch, email, password) => {
 }
 
 const logout = (dispatch) => {
-    dispatch({type:"USER_LOGIN", })
+    auth().signOut()
+    .then(() => dispatch({type:"USER_LOGIN",  value: null}) )
+    
 }
 
 const createNewService = (newService) => {

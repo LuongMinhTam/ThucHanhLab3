@@ -13,7 +13,7 @@ export default Login = ({navigation}) => {
     useEffect(() => {
         if(userLogin != null) {
             if(userLogin.role == 'admin') {
-                navigation.navigate("Home")
+                navigation.navigate("Admin", {screen: "Home"})
             } else {
                 navigation.navigate("Customer")
             }

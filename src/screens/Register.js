@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { login, register, useMyContextController } from "../context";
 import {  Text, View } from "react-native";
-import { Button, TextInput } from "react-native-paper";
+import { Button, HelperText, TextInput } from "react-native-paper";
 import auth from '@react-native-firebase/auth'
 import  firestore  from "@react-native-firebase/firestore"
 
@@ -14,6 +14,10 @@ export default Login = ({navigation}) => {
     const [address, setAddress] = useState('');
     const [showPassword, setShowPassword] = useState(false);
     const [controller, dispatch] = useMyContextController();
+    const hasErrorName = () => name==""
+    const hasErrorEmail = () => !email.includes('@') && email.length > 0
+    const hasErrorPass = () => password.length < 6
+    const hasErrorPassConfirm = () => confirmPassword != password || confirmPassword.length < 6
 
     const onRegister = () => {
         const USERS = firestore().collection("USERS");
@@ -46,17 +50,29 @@ export default Login = ({navigation}) => {
                 style={{margin: 10}}
                 mode="outlined"
             />
+            <HelperText type='error' visible={hasErrorName()}>
+                Error name
+            </HelperText>
             <TextInput placeholder="Email" value={email} onChangeText={setEmail} style={{margin: 10}} mode="outlined" />
+            <HelperText type='error' visible={hasErrorEmail()}>
+                Error email
+            </HelperText>
             <TextInput placeholder="Password" value={password} onChangeText={setPassword}
                 style={{margin: 10}}
                 right={<TextInput.Icon icon={"eye"} onPress={() => setShowPassword(!showPassword)}/>}
                 mode="outlined"
             />
-            <TextInput placeholder="Confirm Password" value={password} onChangeText={setPassword}
+            <HelperText type='error' visible={hasErrorPass()}>
+                Error password
+            </HelperText>
+            <TextInput placeholder="Confirm Password" value={confirmPassword} onChangeText={setConfirmPassword}
                 style={{margin: 10}}
                 right={<TextInput.Icon icon={"eye"} onPress={() => setShowPassword(!showPassword)}/>}
                 mode="outlined"
             />
+            <HelperText type='error' visible={hasErrorPassConfirm()}>
+                Error passwordconfirm
+            </HelperText>
             <TextInput placeholder="Phone" value={phone} onChangeText={setPhone}
                 style={{margin: 10}}
                 mode="outlined"

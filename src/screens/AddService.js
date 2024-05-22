@@ -47,7 +47,7 @@ export default AddService = ({navigation}) => {
               )
             })
             Alert.alert("Add new service success")    
-            navigation.navigate('Home')
+            navigation.navigate("Admin", {screen: "Home"})
           })
           .catch(e => Alert.alert("Add new service fail"))
         }

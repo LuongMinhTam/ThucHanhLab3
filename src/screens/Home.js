@@ -32,14 +32,18 @@ const Home = ({navigation}) => {
     }, [])
 
     const handleServiceDetail = (service) => {
-        navigation.navigate("RouterServices", {screen: "ServiceDetail", params : {service}})
+        {
+            userLogin.role == "admin" ? (
+                navigation.navigate("RouterServices", {screen: "ServiceDetail", params : {service}})
+            ) : (
+                navigation.navigate("RouterCustomer", {screen: "BookService", params : {service}})
+            )
+        }
     }
     console.log(listServices)
     return (
         <View style={{flex: 1, justifyContent: 'center'}}>
-            <View style={{flex: 1, backgroundColor: "#e63268", alignItems: 'center', flexDirection: 'row'}}>
-                <Text style={{margin: 20, fontSize: 22, fontWeight: 'bold', color: "white"}}>HUYỀN TRINH</Text>
-            </View>
+            
             <View style={{flex: 9}}>
                 <View style={{alignItems: 'center'}}>
                     <Image style={{width: 200, height: 100}} source={{uri: 'https://media.loveitopcdn.com/3807/logo-coca-cola-vector-dongphucsongphu3.png'}} />
@@ -47,7 +51,7 @@ const Home = ({navigation}) => {
                 <View style={{flexDirection: 'row', alignItems: 'center', marginHorizontal: 20}}>
                     <Text style={{flex: 1, fontSize: 18, fontWeight: 'bold', color: 'black'}}>Danh sách các dịch vụ</Text>
                     {
-                        userLogin.role == "admin" && (
+                        userLogin && userLogin.role == "admin" && (
                             <TouchableOpacity onPress={() => navigation.navigate('RouterServices', { screen: 'AddService' })}>
                                 <Icon source="plus-circle" color='#f5456e' size={30} />
                             </TouchableOpacity>

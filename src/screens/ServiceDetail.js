@@ -40,7 +40,7 @@ const ServiceDetail = ({navigation, route }) => {
                         firestore().collection('SERVICES').doc(serviceId).delete()
                         .then(() => {
                             Alert.alert('Service deleted!', 'The service has been deleted successfully.')
-                            navigation.navigate('Home');
+                            navigation.navigate("Admin");
                         })
                         .catch(error => {
                             console.error("Error deleting service", error);

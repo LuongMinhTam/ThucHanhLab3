@@ -18,7 +18,7 @@ const Admin = () => {
         tabBarActiveTintColor: '#f5456e'
       }}
     >
-      <Tab.Screen name={userLogin ? userLogin.name : "Admin"} component={Home}
+      <Tab.Screen name={userLogin ? userLogin.name : "admin"} component={Home}
         options={{
           tabBarLabel: 'Home',
           tabBarIcon: ({ color, size }) => (<Icon
